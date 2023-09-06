@@ -16,7 +16,7 @@ const Home = () => {
                     <Text style={styles.txt}>Rendre un livre</Text>
                 </View>
             </View>
-            <Text style={styles.textFooter}>Made with ❤️ by Dieu</Text>
+            <Text style={styles.textFooter}>Made with ❤️ by Pete</Text>
         </SafeAreaView>
     )
 }
