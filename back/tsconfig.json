@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-      "baseUrl": ".",
+      "baseUrl": "",
       "target": "es2017",
       "module": "CommonJS",
       "lib": ["esnext"],
@@ -12,11 +12,11 @@
       "skipDefaultLibCheck": true,
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
-      "outDir": "./dist",
+      "outDir": "dist",
       "strictPropertyInitialization": false,
       "paths": {
-        "~/*": ["./src/*"],
-        "~~/*": ["./*"]
+        "~/*": ["src/*"],
+        "~~/*": ["*"]
       }
     },
     "ts-node": {
