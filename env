@@ -1,0 +1,3 @@
+DATABASE= booker:nwYCEb4CCnem3TfK@bookcode.vjphi8v.mongodb.net/codeBookDatabase?retryWrites=true&w=majority
+
+PORT = 5009
