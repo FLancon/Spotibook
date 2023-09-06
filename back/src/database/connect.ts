@@ -1,8 +1,8 @@
 import mongoose from 'mongoose'
-import {modelBook, modelSelfService, modelUsers} from '../models/model'
+import { modelBook, modelSelfService } from '../models/model'
 import * as dotenv from 'dotenv'
 
-// dotenv.config({path: `./env.${process.env.NODE_ENV}`})
+// dotenv.config({path: `./.env.${process.env.NODE_ENV}`})
 dotenv.config()
 
 const url = `mongodb+srv://${process.env.DATABASE}`
@@ -38,12 +38,5 @@ export const createData = () => {
     })
 
     selfService.save()
-
-    const users = new modelUsers ({
-        name: 'Quentin',
-        code: "4VGT5"
-    })
-
-    users.save()
 }
 

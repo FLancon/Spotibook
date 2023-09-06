@@ -1,30 +1,23 @@
-import { Text, View, StyleSheet, Image } from 'react-native'
+import { Text, View, StyleSheet, Image, SafeAreaView } from 'react-native'
 import { Link } from 'react-router-native'
 
 const Home = () => {
-
-
-
     return (
-        <View style={styles.container}>
-
-            <Text style={styles.title}>📚SPOTIBOOK 📚</Text>
-
-            <Text style={styles.text}>Que souhaitez-vous faire ?</Text>
+        <SafeAreaView style={styles.container}>
+            <Text style={styles.text}>SPOT a book 📚</Text>
+            <Text style={styles.smallText}>(c'est SPOT mais pas trop SPOT)</Text>
             <View style={styles.conn}>
-
                 <View style={styles.card}>
-
-                    <Link to={'/emprunter'}><Image style={styles.image} source={require('../assets/biblio.png')}></Image></Link>
-                    <Text style={styles.txt}>Emprunter un livre 📔</Text>
+                    <Link to={'/emprunter'}><Image style={styles.img} source={require('../assets/worldbook.png')}></Image></Link>
+                    <Text style={styles.txt}>Emprunter un livre</Text>
                 </View>
                 <View style={styles.card}>
                     <Link to={'/rendre'}><Image style={styles.img} source={require('../assets/back.png')}></Image></Link>
-                    <Text style={styles.txt}>Rendre un livre 📥</Text>
+                    <Text style={styles.txt}>Rendre un livre</Text>
                 </View>
             </View>
-
-        </View>
+            <Text style={styles.textFooter}>Made with ❤️ by Dieu</Text>
+        </SafeAreaView>
     )
 }
 
@@ -32,53 +25,47 @@ export default Home;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#ECE0BF',
+        backgroundColor: '#5192c5',
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
         margin: 0,
     },
-    title: {
-        marginTop: "1%",
-        marginBottom: "3%",
-        fontSize: 50,
-        color: "#181818",
-        fontWeight: "bold",
-    },
     text: {
-        marginTop: "6%",
         marginBottom: "3%",
         fontSize: 30,
-        color: "#2d2d2d",
+        color: "#ffffff",
         fontWeight: "bold",
     },
     conn: {
-        width: '90%',
-        backgroundColor: '#E6BD57',
+        width: '60%',
+        backgroundColor: '#3f3fef',
         borderRadius: 20,
         alignItems: 'center',
         justifyContent: 'center',
         padding: 10,
-        borderColor: "#181818",
+        borderColor: "#003147",
         borderWidth: 1,
     },
     card: {
         alignItems: 'center',
-        marginVertical: 25,
+        marginVertical: 50,
     },
     img: {
-        width: 350,
+        width: 150,
         height: 150,
     },
     txt: {
         fontSize: 20,
-        color: "#003147",
+        color: "#ffffff",
         fontWeight: "bold",
-        marginTop: 10,
     },
-    image: {
-        width: 150,
-        height: 150,
-        borderRadius: 70,
+    textFooter: {
+        position: 'absolute',
+        bottom: 20,
+    },
+    smallText: {
+        fontSize: 15,
+        color: "#ffffff",
+        marginBottom: 40,
     }
 });

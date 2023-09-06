@@ -1,5 +1,3 @@
-# syntax=docker/dockerfile:1
-
 FROM node:18-alpine
 
 #
@@ -7,7 +5,7 @@ ADD . /dist/
 WORKDIR /dist
 
 #
-RUN touch env
+RUN touch .env
 
 #
 RUN ls -a

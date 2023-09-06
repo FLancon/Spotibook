@@ -1,7 +1,6 @@
-import { Text, View, StyleSheet, Button, TouchableOpacity, Dimensions } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native'
 import { useEffect, useState } from 'react';
 import { BarCodeScanner } from 'expo-barcode-scanner';
-import * as Clipboard from 'expo-clipboard';
 import { Link } from 'react-router-native';
 import axios from 'axios';
 import { BASE_URL } from '../src/config';
@@ -33,18 +32,16 @@ const Home = () => {
                 axios.get(`${BASE_URL}/selfservice/${data}`)
                 .then(res =>{
                     let pointInfo = res.data;
-                    console.log('then', pointInfo)
                     setPoint(true)
-                    setTextTop('Scanner le livre à rendre')
+                    setTextTop('Scanner le livre à rendre 📚')
                     AsyncStorage.setItem('pointId', data);
-                    alert("Point scanné")
+                    alert(`Le point situé à ${pointInfo.result.location} a été scanné ! 🎉`);
                 })
                 .catch(error => {
                     console.log(`point fail`, error)
                 })
             }
             catch (error) {
-                console.log(error)
                 alert(`est invalide`)
             }
         } else {
@@ -57,19 +54,13 @@ const Home = () => {
                 axios.put(`${BASE_URL}/render/${data}`, pointId)
                     .then(res => {
                         let livreInfo = res.data;
-                        console.log('then', livreInfo);
-                        alert("Livre rendu, merci !")
+                        alert(`Le livre ${livreInfo.render.title} a bien été rendu 🎉`)
                     })
                     .catch(error => {
                         console.log(`rendre error : ${error}`);
                         alert(`Une erreur est survenue, veuillez réessayer ultérieurement`)
-                        // AsyncStorage.getItem('userInfo', (err, result) => {
-                        //     console.log(result, error);
-                        //   })
-
                     })
             } catch (error) {
-                console.log(error)
                 alert(` invalide`)
             }
         }
@@ -82,12 +73,8 @@ const Home = () => {
         return <Text>Impossible d'accéder à la caméra</Text>;
     }
 
-    // const copyToClipboard = async () => {
-    //     await Clipboard.setStringAsync(Res);
-    // };
-
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Text style={styles.text}>{textTop}</Text>
 
             <View style={styles.conn}>
@@ -105,15 +92,9 @@ const Home = () => {
                 <Text style={styles.appButtonText}>Scanner à nouveau</Text>
             </TouchableOpacity>}
 
-            {/* {scanned && 
-                <TouchableOpacity style={styles.appButtonContainer} onPress={copyToClipboard}>
-                    <Text style={styles.appButtonText}>Copier le texte</Text>
-                </TouchableOpacity>
-            } */}
-
             <Link to={'/'}><Text style={styles.text}>Retour</Text></Link>
 
-        </View>
+        </SafeAreaView>
     )
 }
 
@@ -121,23 +102,22 @@ export default Home;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#A6A6A6',
+        backgroundColor: '#5192c5',
         flex: 1,
         alignItems: 'center',
-        // justifyContent: 'center',
         margin: 0,
     },
     text: {
         marginTop: "6%",
         marginBottom: "3%",
-        fontSize: 40,
-        color: "#003147",
+        fontSize: 30,
+        color: "#ffffff",
         fontWeight: "bold",
     },
     textRes: {
         marginTop: "3%",
         fontSize: 20,
-        color: "#003147",
+        color: "#ffffff",
         fontWeight: "bold",
     },
     conn: {
